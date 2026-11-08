@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hdinitial.com/sitemap.xml
