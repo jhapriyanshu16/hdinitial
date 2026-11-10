@@ -77,8 +77,8 @@
 
   const renderBranchLocations = () => {
     document.querySelectorAll("[data-branch-locations]").forEach((mount) => {
-      mount.innerHTML = config.branches.map((branch) => `
-        <article class="card branch-card" data-no-card-image>
+      const renderBranchCard = (branch, modifier = "") => `
+        <article class="card branch-card ${modifier}" data-no-card-image>
           <div class="branch-card__heading">
             <span class="branch-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
@@ -88,9 +88,27 @@
           <address>${branch.address}</address>
           <div class="branch-card__contacts">
             <a href="${telephoneHref(branch.telephone)}">${branch.telephone}</a>
-            <a href="mailto:${branch.email}">${branch.email}</a>
           </div>
-        </article>`).join("");
+        </article>`;
+
+      if (mount.closest(".about-locations")) {
+        const [headOffice, ...otherBranches] = config.branches;
+        mount.innerHTML = `
+          <div class="about-location-feature">
+            ${renderBranchCard(headOffice, "branch-card--head-office")}
+          </div>
+          <div class="about-location-other">
+            <div class="section-heading">
+              <h3>Other branches</h3>
+              <p>Our additional locations across Maharashtra.</p>
+            </div>
+            <div class="about-location-other__grid">
+              ${otherBranches.map((branch) => renderBranchCard(branch, "branch-card--other")).join("")}
+            </div>
+          </div>`;
+      } else {
+        mount.innerHTML = config.branches.map((branch) => renderBranchCard(branch)).join("");
+      }
     });
   };
 
@@ -178,7 +196,7 @@
           </div>
           <nav aria-label="Explore"><h2>Explore</h2><ul><li><a href="/products/">Products</a></li><li><a href="/services/">Services</a></li><li><a href="/solutions/">Business solutions</a></li><li><a href="/rentals/">Equipment rentals</a></li><li><a href="/knowledge/">Knowledge centre</a></li></ul></nav>
           <div><h2>Contact</h2><address><a href="mailto:${config.email}">${config.email}</a><p>${config.businessHours}</p>${registrationDetails ? `<p>${registrationDetails}</p>` : ""}</address></div>
-          <div><h2>Our branches</h2><ul class="footer-branch-list">${config.branches.map((branch) => `<li><span>${branch.name}</span><span class="footer-branch-address">${branch.address}</span><a href="${telephoneHref(branch.telephone)}">${branch.telephone}</a><a href="mailto:${branch.email}">${branch.email}</a></li>`).join("")}</ul></div>
+          <div><h2>Head office</h2><address><strong>HD INITIAL PRIVATE LIMITED</strong><br><span class="footer-branch-address">${config.branches[0].name}</span><br><span class="footer-branch-address">${config.branches[0].address}</span></address><h2>Other branches</h2><ul class="footer-branch-list">${config.branches.slice(1).map((branch) => `<li><span>${branch.name}</span><span class="footer-branch-address">${branch.address}</span></li>`).join("")}</ul></div>
         </div>
         <div class="container footer-bottom"><span>© <span data-year></span> ${config.companyName}. All rights reserved.</span><nav aria-label="Legal"><a href="/privacy-policy.html">Privacy policy</a><a href="/terms-and-conditions.html">Terms & conditions</a></nav></div>
       </footer>

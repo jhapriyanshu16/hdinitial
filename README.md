@@ -16,8 +16,8 @@ Then open `http://localhost:8000/`. Do not open the HTML files directly with `fi
 
 Edit [`js/config.js`](./js/config.js):
 
-- `whatsappNumber`: verified WhatsApp number in international format, digits only (`917887558376`).
-- `email`: company email address (`hdinitialpvtltd@gmail.com`).
+- `whatsappNumber`: verified WhatsApp number in international format, digits only (`917558344886`).
+- `email`: company email address (`sales.hdinitial@gmail.com`).
 - `businessHours`: displayed business-hours text, including Sunday emergency availability.
 - `branches`: update each published branch name, address, telephone number and email.
 - `socialLinks`: the Instagram, Facebook and LinkedIn icons currently use platform homepage placeholders; update the URLs when company profiles are ready.
@@ -47,7 +47,7 @@ The sitemap, `robots.txt`, canonical URLs, and structured data use the live doma
 
 - HD Initial has four branches: Virar East (Head Office), Andheri West, Boisar West and Kalyan East. Their addresses, phone numbers and emails are maintained in `js/config.js`.
 - The website highlights service to clients across Mumbai and Maharashtra.
-- WhatsApp enquiries use `+91-7887558376`; the floating WhatsApp button opens a direct chat with a prewritten message.
+- WhatsApp enquiries use `+91-7558344886`; the floating WhatsApp button opens a direct chat with a prewritten message.
 - Product models, prices, stock, rental availability and terms, and service scope are confirmed individually.
 - Client testimonials, experience and impact statistics are supplied company content. No project photographs, warranties or authorized brand relationships have been invented. The projects page states that its gallery is currently unavailable until genuine company photographs are provided.
 - The supplied HD Initial logo is in `assets/logo/hd-initial-logo.png`. The separate informational image was not presented as company project photography.
@@ -74,7 +74,7 @@ The sitemap, `robots.txt`, canonical URLs, and structured data use the live doma
 
 ## Deployment checklist
 
-1. Deploy with GSTIN and CIN pending; add the verified legal identifiers to `js/config.js` when available.
+1. Keep the verified GSTIN and CIN current in `js/config.js`.
 2. Keep the live production domain consistent in `js/config.js`, `sitemap.xml`, `robots.txt`, and static SEO defaults.
 3. Keep the reviewed privacy and terms content up to date.
 4. Add genuine installation photographs and verified brand/product assets only when available.
